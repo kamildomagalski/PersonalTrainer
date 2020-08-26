@@ -1,6 +1,6 @@
 @import "reset/reset";
-@import "variables/base";
 @import "variables/mixins";
+@import "variables/base";
 @import "variables/typography";
 @import "variables/variables";
 
@@ -8,3 +8,4 @@
 @import "landing_page/header";
 @import "elements/button";
 @import "landing_page/discover_section";
+@import "landing_page/features_section";
