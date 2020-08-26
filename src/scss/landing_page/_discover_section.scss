@@ -29,10 +29,20 @@
       font-size: 1.6rem;
       line-height: 2rem;
       font-weight: 700;
-
+    }
+    @include tablet{
+      width: 450px;
+      height: 220px;
+      h2{
+        font-size: 2rem;
+        line-height: 2.5rem;
+      }
     }
   }
   &__btn{
 margin-top: 15px;
+    @include tablet{
+      margin-top: 30px;
+    }
   }
 }
