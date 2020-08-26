@@ -1,0 +1,38 @@
+
+.board {
+  background-color: $bg-color_light;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.discover {
+  background-image: url("/public/images/bg-main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 100px);
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__board {
+    width: 300px;
+    height: 150px;
+    h2{
+      font-family: $font-primary;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      font-weight: 700;
+
+    }
+  }
+  &__btn{
+margin-top: 15px;
+  }
+}
