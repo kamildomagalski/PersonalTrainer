@@ -1,10 +1,10 @@
 import React from 'react';
-
+import Header from "./landing_page/header";
 
 function App() {
   return (
     <>
-    <h1>lets start</h1>
+    <Header/>
     </>
   );
 }
