@@ -1,9 +1,16 @@
 import React from 'react';
+import CloseX from "../components/closeX";
 
-function LogInSection() {
+function LogInSection({isVisible, onVisibilityChange}) {
+ 
+  const handleOff= () =>{
+    onVisibilityChange(false)
+  }
+  
  return (
-  <section className={'logIn hidden'}>
+  <section className={isVisible ? 'logIn': 'logIn hidden'}>
     <div className={'board logIn__board'}>
+      <CloseX onClick={handleOff}/>
       <h2 className={'logIn__title'}>Welcome to</h2>
       <h2 className={'logIn__title'}>Personal Trainer!</h2>
       <input type={'text'} className={'logIn__input'} placeholder={'Username'}/>
