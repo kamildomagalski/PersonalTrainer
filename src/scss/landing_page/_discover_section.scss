@@ -14,11 +14,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: calc(100vh - 100px);
+  position: relative;
+  z-index: -2;
 
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -3;
   }
 
   &__board {

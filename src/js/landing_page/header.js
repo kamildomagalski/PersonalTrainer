@@ -5,6 +5,7 @@ function Header() {
  const [isActive, setActive]= useState(false)
  
  const toggleMenu=()=>{
+   console.log(isActive);
    setActive(prevState => !prevState)
  }
   
