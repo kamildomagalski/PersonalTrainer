@@ -5,8 +5,13 @@ import FeaturesSection from "./landing_page/features_section";
 import TakeALookSection from "./landing_page/takeALook_section";
 import GetStartedSection from "./landing_page/getStarted_section";
 import Footer from "./landing_page/footer";
+import LogInSection from "./landing_page/logIn_section";
+
+
 
 function App() {
+
+  
   return (
     <>
     <Header/>
@@ -15,6 +20,7 @@ function App() {
     <TakeALookSection/>
     <GetStartedSection/>
     <Footer/>
+    <LogInSection/>
     </>
   );
 }
