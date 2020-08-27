@@ -19,18 +19,19 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 100px;
+    top: -497px ;
     width: 100%;
     background-color: $bg-color_dark;
-    transform: translateY(-100%);
-    transition: transform 0.5s ease-in-out;
+    //transform: translateY(-100%);
+    transition: 0.5s ease-in-out;
     z-index: -1;
+    border-radius: 10px ;
     @include tablet {
       position: static;
       flex-direction: row;
       margin-right: 40px;
       z-index: 1;
-      transform: unset;
+      //transform: unset;
       transition: unset;
       width: unset;
     }
@@ -53,7 +54,7 @@
   }
 
   .menu-active {
-    transform: translateY(0%);
+    top: 100px;
   }
 
   &__burger {
