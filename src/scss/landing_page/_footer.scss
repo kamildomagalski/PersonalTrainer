@@ -1,0 +1,56 @@
+.footer {
+  background-color: $bg-color_dark;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 20px 20px;
+    width: 100%;
+
+    @include tablet{
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 20px 0 0;
+    }
+    @include desktop{
+      padding: 0 40px;
+    }
+  }
+
+  &__logo {
+    width: 150px;
+    height: 85px;
+  }
+  &__media{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 152px;
+  }
+  &__text{
+    font-family: $font-primary;
+    color: $text-color_light;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  &__icons{
+    height: 20px;
+    width: 100%;
+    background-color: red;
+  }
+}
+.copyrights{
+  font-family: $font-primary;
+  font-size: 0.7rem;
+  color: $text-color_light;
+  margin-bottom: 10px;
+}
