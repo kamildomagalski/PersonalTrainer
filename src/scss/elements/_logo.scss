@@ -5,7 +5,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  background-color: $bg-color_dark;
   background-image: url("/images/logo-img.png");
+  background-size: cover;
+  background-position: bottom;
   p{
     font-family: $font-secondary;
     font-size: 1.2rem;
