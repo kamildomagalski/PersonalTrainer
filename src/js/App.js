@@ -21,14 +21,14 @@ function App() {
   }
   return (
     <>
-      {/*<Header onLoginClick={handleLoginVisible}/>*/}
-      {/*<DiscoverSection/>*/}
-      {/*<FeaturesSection/>*/}
-      {/*<TakeALookSection/>*/}
-      {/*<GetStartedSection/>*/}
-      {/*<Footer/>*/}
-      {/*<LogInSection isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}/>*/}
-      <MainPulpit/>
+      <Header onLoginClick={handleLoginVisible}/>
+      <DiscoverSection/>
+      <FeaturesSection/>
+      <TakeALookSection/>
+      <GetStartedSection/>
+      <Footer/>
+      <LogInSection isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}/>
+      {/*<MainPulpit/>*/}
     </>
   );
 }
