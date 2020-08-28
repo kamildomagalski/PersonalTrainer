@@ -10,6 +10,7 @@ import TakeALookSection from "./landing_page/takeALook_section";
 import GetStartedSection from "./landing_page/getStarted_section";
 import Footer from "./landing_page/footer";
 import LogInSection from "./landing_page/logIn_section";
+import MainPulpit from "./application/mainPulpit";
 
 
 function App() {
@@ -20,13 +21,14 @@ function App() {
   }
   return (
     <>
-      <Header onLoginClick={handleLoginVisible}/>
-      <DiscoverSection/>
-      <FeaturesSection/>
-      <TakeALookSection/>
-      <GetStartedSection/>
-      <Footer/>
-      <LogInSection isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}/>
+      {/*<Header onLoginClick={handleLoginVisible}/>*/}
+      {/*<DiscoverSection/>*/}
+      {/*<FeaturesSection/>*/}
+      {/*<TakeALookSection/>*/}
+      {/*<GetStartedSection/>*/}
+      {/*<Footer/>*/}
+      {/*<LogInSection isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}/>*/}
+      <MainPulpit/>
     </>
   );
 }
