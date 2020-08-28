@@ -25,3 +25,8 @@ yarn-error.log*
 .idea/
 .settings/
 .vscode/
+
+# firebase
+.env
+
+signUp_page2.js

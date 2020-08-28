@@ -1,0 +1,137 @@
+appScreen{
+  display: flex;
+
+}
+
+.appHeader {
+  background-color: $bg-color_dark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  z-index: 2;
+
+
+
+  &__logo {
+    height: 80px;
+    width: 150px;
+    margin-left: 40px;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: -300px;
+    width: 100%;
+    background-color: $bg-color_dark;
+    transition: 0.5s ease-in-out;
+    z-index: -1;
+    border-radius: 10px ;
+    @include tablet(660px) {
+      position: static;
+      flex-direction: row;
+      margin-right: 40px;
+      z-index: 1;
+      //transform: unset;
+      transition: unset;
+      width: unset;
+    }
+    @include desktop{
+      position: absolute;
+      flex-direction: column;
+      top: 100px;
+      left: 0;
+      border-radius: unset;
+      height: calc(100vh - 100px);
+      width: 150px;
+      margin: 0;
+    }
+
+    .link {
+      text-align: center;
+      padding: 20px 0;
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      color: $text-color_green;
+      width: 100%;
+
+      @include tablet(660px) {
+        padding: 0 0 0 20px;
+      }
+      @include desktop{
+        padding: 15px 0 0 20px;
+      }
+    }
+
+    a {
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      color: $text-color_green;
+      width: 100%;
+    }
+  }
+
+  //user avatar
+
+  &__user{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    @include desktop{
+      display: flex;
+    }
+  }
+  &__avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: $bg-color_light;
+    margin-bottom: 15px;
+  }
+  &__userName{
+    font-family: $font-secondary;
+    color: $text-color_orange;
+    font-size: 1.3rem;
+
+  }
+
+//dropdown action
+  .appMenu-active {
+    top: 90px;
+  }
+
+
+  //burgermenu
+  &__burger {
+    margin-right: 40px;
+    cursor: pointer;
+    @include tablet(660px) {
+      display: none;
+    }
+
+    div {
+      width: 25px;
+      height: 3px;
+      background-color: $bg_color_light;
+      margin: 5px;
+    }
+
+  }
+}
+.appPulpit{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  border: none;
+  z-index: -2;
+  @include desktop{
+    width: calc(100% - 150px);
+  }
+}
