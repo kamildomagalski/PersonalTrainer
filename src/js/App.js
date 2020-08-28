@@ -1,34 +1,24 @@
-import React, {useState} from 'react';
-// FontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTimes} from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
-import Header from "./landing_page/header";
-import DiscoverSection from "./landing_page/discover_section";
-import FeaturesSection from "./landing_page/features_section";
-import TakeALookSection from "./landing_page/takeALook_section";
-import GetStartedSection from "./landing_page/getStarted_section";
-import Footer from "./landing_page/footer";
-import LogInSection from "./landing_page/logIn_section";
-import MainPulpit from "./application/mainPulpit";
+// FontAwesome
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
+
+import LandingPage from "./landing_page/landingPage";
+import AppMainPulpit from "./application/appMainPulpit";
 
 
 function App() {
-  const [isLogInShown, setLoginShown] = useState(false)
   
-  const handleLoginVisible= (value) =>{
-    setLoginShown(value)
-  }
   return (
     <>
-      <Header onLoginClick={handleLoginVisible}/>
-      <DiscoverSection/>
-      <FeaturesSection/>
-      <TakeALookSection/>
-      <GetStartedSection/>
-      <Footer/>
-      <LogInSection isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}/>
-      {/*<MainPulpit/>*/}
+      <Router>
+        <Switch>
+          <Route path={'/'} exact component={LandingPage}/>
+          <Route path={'/app'} component={AppMainPulpit}/>
+        </Switch>
+      </Router>
     </>
   );
 }
