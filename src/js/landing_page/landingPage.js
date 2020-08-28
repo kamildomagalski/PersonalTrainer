@@ -6,13 +6,18 @@ import FeaturesSection from "./features_section";
 import TakeALookSection from "./takeALook_section";
 import GetStartedSection from "./getStarted_section";
 import Footer from "./footer";
-import LogInSection from "./logIn_section";
+import LogInPage from "./logIn_page";
+import SignUpPage from "./signUp_page";
 
 function LandingPage() {
   const [isLogInShown, setLoginShown] = useState(false)
+  const [isSignUpShown, setSignUpShown] = useState(false)
   
   const handleLoginVisible= (value) =>{
     setLoginShown(value)
+  }
+  const handleSignUpVisible= (value) => {
+    setSignUpShown(value);
   }
  return (
   <>
@@ -22,7 +27,8 @@ function LandingPage() {
     <TakeALookSection/>
     <GetStartedSection/>
     <Footer/>
-    <LogInSection isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}/>
+    <LogInPage isVisible={isLogInShown} onVisibilityChange={handleLoginVisible} handleSignUpVisible={handleSignUpVisible}/>
+    <SignUpPage isSignUpShown={isSignUpShown} handleSignUpVisible={handleSignUpVisible} handleLoginVisible={handleLoginVisible}/>
   </>
  );
 }
