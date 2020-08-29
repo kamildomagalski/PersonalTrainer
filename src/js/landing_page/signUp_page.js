@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import CloseX from "../components/closeX";
-import { FirebaseContext } from '../components/Firebase/indexFirebase';
+import {FirebaseContext} from '../components/Firebase/indexFirebase';
 
 
 function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
@@ -18,7 +18,7 @@ function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
     handleLoginVisible(true)
   }
   
-
+  
   const SignUpForm = ({firebase}) => {
     
     const handleSubmit = (event) => {
@@ -26,14 +26,28 @@ function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
       firebase
         .doCreateUserWithEmailAndPassword(initialState.email, initialState.passwordOne)
         .then(authUser => {
-          setState({...initialState});
+          setState({
+            username: '',
+            email: '',
+            passwordOne: '',
+            passwordTwo: '',
+            error: null
+          });
+          handleOff();
         })
         .catch(error => {
-            setState({...initialState, error})
+            setState({
+              ...initialState,
+              username: '',
+              email: '',
+              passwordOne: '',
+              passwordTwo: '',
+              error
+            })
           }
-        );
+        )
     }
-  
+    
     const handleChange = (event) => {
       const {name, value} = event.target;
       setState(prevState => {
@@ -43,7 +57,7 @@ function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
         }
       })
     }
-  
+    
     const isInvalid =
       initialState.passwordOne !== initialState.passwordTwo ||
       initialState.passwordOne === '' ||
@@ -88,7 +102,7 @@ function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
           <button className={'btn signUp__btn'} disabled={isInvalid} type={'submit'}>
             CREATE ACCOUNT
           </button>
-          {/*{error && <p>{error.message}</p>}*/}
+          {initialState.error && <p>{initialState.error.message}</p>}
         </form>
       </>
     )
