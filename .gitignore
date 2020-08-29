@@ -29,4 +29,3 @@ yarn-error.log*
 # firebase
 .env
 
-signUp_page2.js
