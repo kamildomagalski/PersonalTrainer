@@ -1,11 +1,11 @@
 import React from 'react';
 import CloseX from "../components/closeX";
-// import {Link} from "react-router-dom";
+
 
 import {FirebaseContext} from '../components/Firebase/indexFirebase';
 import LogInForm from "../components/logic_components/logIn_form";
 
-function LogInPage({isVisible, onVisibilityChange, handleSignUpVisible}) {
+function LogInPage({history, isVisible, onVisibilityChange, handleSignUpVisible}) {
   
   const handleOff = () => {
     onVisibilityChange(false)
@@ -22,7 +22,7 @@ function LogInPage({isVisible, onVisibilityChange, handleSignUpVisible}) {
         <h2 className={'logIn__title'}>Welcome to</h2>
         <h2 className={'logIn__title'}>Personal Trainer!</h2>
         <FirebaseContext.Consumer>
-          {firebase => <LogInForm firebase={firebase} handleOff={handleOff}/>}
+          {firebase => <LogInForm firebase={firebase} handleOff={handleOff} history={history}/>}
         </FirebaseContext.Consumer>
         <p className={'logIn__text'}>or</p>
         <button onClick={handleOn} className={'btn logIn__btn logIn__btn-create'}>CREATE ACCOUNT</button>

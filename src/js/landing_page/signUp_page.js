@@ -16,7 +16,7 @@ function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
         <CloseX onClick={handleOff}/>
         <h2 className={'signUp__title'}>Sign Up Now!</h2>
         <FirebaseContext.Consumer>
-          {firebase => <SignUpForm firebase={firebase}/>}
+          {firebase => <SignUpForm firebase={firebase} handleOff={handleOff}/>}
         </FirebaseContext.Consumer>
       </div>
     </section>

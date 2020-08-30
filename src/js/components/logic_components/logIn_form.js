@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import { withRouter } from 'react-router-dom';
 
-export default function LogInForm ({firebase, handleOff}) {
+export default function LogInForm ({firebase, handleOff, history}) {
   
   const [logState, setLogState] = useState({
     email: '',
@@ -20,6 +21,7 @@ export default function LogInForm ({firebase, handleOff}) {
           error: null
         })
         handleOff();
+        history.push('/app')
       })
       .catch(error => {
         setLogState({
@@ -66,6 +68,7 @@ export default function LogInForm ({firebase, handleOff}) {
         <button className={'btn logIn__btn logIn__btn-log'} disabled={isInvalid} type={'submit'}>
           LOG IN
         </button>
+        {logState.error && <p>{logState.error.message}</p>}
       </form>
     </>
   )
