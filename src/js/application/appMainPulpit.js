@@ -4,6 +4,7 @@ import {Route, Link} from 'react-router-dom'
 import Calendar from "./calendar";
 import History from "./history";
 import Plans from "./plans";
+import LogOutButton from "../components/logic_components/LogOutButton";
 
 
 function AppMainPulpit() {
@@ -28,7 +29,7 @@ function AppMainPulpit() {
           <Link to={'/app/history'} onClick={toggleMenu} className={'link'}>History</Link>
           <Link onClick={toggleMenu} className={'link'}>Exercises</Link>
           <Link to={'/app/plans'} onClick={toggleMenu} className={'link'}>Plans</Link>
-          <Link onClick={toggleMenu} className={'link'}>Log out</Link>
+          <LogOutButton className={'link'}/>
         </ul>
         <div onClick={toggleMenu} className={'appHeader__burger'}>
           <div className={'line1'}/>

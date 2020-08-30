@@ -1,7 +1,5 @@
 import React from 'react';
 import CloseX from "../components/closeX";
-
-
 import {FirebaseContext} from '../components/Firebase/indexFirebase';
 import LogInForm from "../components/logic_components/logIn_form";
 
