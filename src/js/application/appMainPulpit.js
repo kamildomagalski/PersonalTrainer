@@ -5,7 +5,7 @@ import Calendar from "./calendar";
 import History from "./history";
 import Plans from "./plans";
 import LogOutButton from "../components/logic_components/LogOutButton";
-
+import withAuthorization from '../components/Session/withAuthorization'
 
 function AppMainPulpit() {
   const [isActive, setActive] = useState(false)
@@ -47,5 +47,6 @@ function AppMainPulpit() {
     </section>
   );
 }
+const condition = isAuth => !!isAuth;
 
-export default AppMainPulpit;
+export default withAuthorization(condition) (AppMainPulpit);
