@@ -27,7 +27,7 @@ function AppMainPulpit() {
           </li>
           <Link to={'/app/calendar'} onClick={toggleMenu} className={'link'}>Calendar</Link>
           <Link to={'/app/history'} onClick={toggleMenu} className={'link'}>History</Link>
-          <Link onClick={toggleMenu} className={'link'}>Exercises</Link>
+          <Link to={'/app/history'} onClick={toggleMenu} className={'link'}>Exercises</Link>
           <Link to={'/app/plans'} onClick={toggleMenu} className={'link'}>Plans</Link>
           <LogOutButton className={'link'}/>
         </ul>

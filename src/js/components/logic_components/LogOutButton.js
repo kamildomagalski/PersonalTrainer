@@ -1,10 +1,11 @@
 import React from "react";
 
 import { withFirebase } from "../Firebase/context";
+import {Link} from "react-router-dom";
 
 const LogOutButton = ({firebase})=>(
-  <button  onClick={firebase.doSignOut} type={'button'} className={'link'}>
+  <Link to={'/'} onClick={firebase.doSignOut} type={'button'} className={'link'}>
     Log Out
-  </button>
+  </Link>
 )
   export default withFirebase(LogOutButton);

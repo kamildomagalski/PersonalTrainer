@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import Header from "./header";
 import DiscoverSection from "./discover_section";
@@ -10,28 +10,32 @@ import LogInPage from "./logIn_page";
 import SignUpPage from "./signUp_page";
 
 
-function LandingPage({history}) {
+
+function LandingPage({history, isAuth}) {
   const [isLogInShown, setLoginShown] = useState(false)
   const [isSignUpShown, setSignUpShown] = useState(false)
   
-  const handleLoginVisible= (value) =>{
+  const handleLoginVisible = (value) => {
     setLoginShown(value)
   }
-  const handleSignUpVisible= (value) => {
+  const handleSignUpVisible = (value) => {
     setSignUpShown(value);
   }
-  
- return (
-  <>
-    <Header onLoginClick={handleLoginVisible}/>
-    <DiscoverSection/>
-    <FeaturesSection/>
-    <TakeALookSection/>
-    <GetStartedSection/>
-    <Footer/>
-    <LogInPage history={history} isVisible={isLogInShown} onVisibilityChange={handleLoginVisible} handleSignUpVisible={handleSignUpVisible}/>
-    <SignUpPage isSignUpShown={isSignUpShown} handleSignUpVisible={handleSignUpVisible} handleLoginVisible={handleLoginVisible}/>
-  </>
- );
+  // console.log(isAuth + ' landing page');
+  return (
+    <>
+      <Header onLoginClick={handleLoginVisible} />
+      <DiscoverSection/>
+      <FeaturesSection/>
+      <TakeALookSection/>
+      <GetStartedSection/>
+      <Footer/>
+      <LogInPage history={history} isVisible={isLogInShown} onVisibilityChange={handleLoginVisible}
+                 handleSignUpVisible={handleSignUpVisible}/>
+      <SignUpPage isSignUpShown={isSignUpShown} handleSignUpVisible={handleSignUpVisible}
+                  handleLoginVisible={handleLoginVisible}/>
+    </>
+  );
 }
+
 export default LandingPage;
