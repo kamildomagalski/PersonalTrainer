@@ -125,13 +125,33 @@ appScreen{
 }
 .appPulpit{
   position: absolute;
+  background-image: url("/images/app-pulpit.jpg");
+  background-size: cover;
+  background-position: center;
   bottom: 0;
   right: 0;
   width: 100%;
   height: calc(100vh - 100px);
   border: none;
   z-index: -2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &__board{
+    background-color: $bg-color_transparent_light;
+    height: 100%;
+    width: 100%;
+  }
+
   @include desktop{
     width: calc(100% - 150px);
+    padding: 50px 20px;
+    &__board{
+      background-color: $bg-color_transparent_light;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
