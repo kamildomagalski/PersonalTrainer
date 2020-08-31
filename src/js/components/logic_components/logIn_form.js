@@ -8,7 +8,7 @@ export default function LogInForm ({firebase, handleOff, history}) {
     passwordOne: '',
     error: null
   })
-  
+
   const handleSubmit = (event) => {
     event.preventDefault()
     firebase
