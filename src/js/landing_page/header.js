@@ -29,7 +29,9 @@ function Header({onLoginClick}) {
         <li><a href={'/#'}>Take a look</a></li>
         <li>
           <AuthUserContext.Consumer>
-            {isAuth => isAuth ? <ButtonAuth/> : <ButtonNoAuth/>}
+            {isAuth => {
+              return isAuth != null ? <ButtonAuth/> : <ButtonNoAuth/>
+            }}
           </AuthUserContext.Consumer>
         </li>
       </ul>

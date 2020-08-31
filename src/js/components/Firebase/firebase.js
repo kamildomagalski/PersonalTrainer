@@ -17,6 +17,7 @@ class Firebase {
     app.initializeApp(config);
     
     this.auth = app.auth();
+    // this.db = app.database();
   }
   
   //***Auth API***
@@ -32,6 +33,13 @@ class Firebase {
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
   
   doPasswordUpdate = password => this.auth.updatePassword(password)
+  
+  
+  //*** User API ***
+  
+  // user = uid => this.db.ref(`users/${uid}`);
+  //
+  // users = () => this.db.ref('users');
 }
 
 export {Firebase};

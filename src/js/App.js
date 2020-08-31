@@ -10,16 +10,15 @@ import AppMainPulpit from "./application/appMainPulpit";
 import { withAuthentication } from './components/Session/indexSession'
 
 
-function App({firebase, isAuth}) {
+function App({isAuth, props}) {
   
-  console.log(isAuth + 'App');
-  console.log(isAuth ? 'mamy to!' : 'niezarejestrowano');
+
   return (
     <>
         <Router>
           <Switch>
             <Route path={'/'} exact render={(props) => <LandingPage {...props}/>}/>
-            <Route path={'/app'} component={AppMainPulpit}/>
+            <Route path={'/app'} render={ (props) => <AppMainPulpit {...props}/>} />
           </Switch>
         </Router>
     </>
