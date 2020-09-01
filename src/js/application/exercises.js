@@ -1,17 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import firebase from "firebase";
 import AddNewExercise from "./AddNewExercise";
+import ShowExerciseInfo from "./ShowExerciseInfo";
 
 function Exercises() {
   const [exercises, setExercises] = useState([])
   const [isLoaded, setLoaded] = useState(false)
   const [isAddNewExVisible, setAddNewExVisible] = useState(false)
+  const [isExInfoVisible, setExInfoVisible] = useState(false)
+  const [exerciseInfo, setExerciseInfo] = useState([])
   
+  
+  const handleExInfoVisible = (value) => {
+    setExInfoVisible(value);
+  }
   const handleAddNewExVisible = (value) => {
     setAddNewExVisible(value)
   }
+  const handleEXInfo = (event) => {
+    const id1 = event.target.exercises.id
+    console.log(id1)
+  }
+  
   const handleOn = () => handleAddNewExVisible(true)
-
+  const handleInfoOn = () => handleExInfoVisible(true)
   
   const rootRef = firebase.database().ref();
   const exercisesRef = rootRef.child('exercises')
@@ -25,7 +37,7 @@ function Exercises() {
       let newKey;
       for (const key in values) {
         newKey = key;
-        tmp.push({...values[key], id : newKey});
+        tmp.push({...values[key], id: newKey});
       }
       setExercises(tmp);
       setLoaded(true)
@@ -64,11 +76,16 @@ function Exercises() {
           <div onClick={handleOn} className={'exercises__box exercises__box-add'}> Add exercise</div>
           {exercises.map(el => {
             return (
-              <div className={'exercises__box'} key={el.id}> {el.name}</div>
+              <div className={'exercises__box'}
+                   onClick={(event) => {
+                     handleInfoOn();
+                     handleEXInfo(event);
+                   }} key={el.id}> {el.name}</div>
             )
           })}
         </div>
         <AddNewExercise isAddNewExVisible={isAddNewExVisible} handleAddNewExVisible={handleAddNewExVisible}/>
+        <ShowExerciseInfo isExInfoVisible={isExInfoVisible} handleExInfoVisible={handleExInfoVisible}/>
       </div>
     </section>
   );
