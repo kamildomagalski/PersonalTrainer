@@ -17,9 +17,11 @@ function Exercises() {
   const handleAddNewExVisible = (value) => {
     setAddNewExVisible(value)
   }
-  const handleEXInfo = (event) => {
-    const id1 = event.target.exercises.id
-    console.log(id1)
+  const handleEXInfo = (exercise) => {
+    setExerciseInfo(exercise);
+  }
+  const clearExerciseInfo= ()=> {
+    setExerciseInfo([])
   }
   
   const handleOn = () => handleAddNewExVisible(true)
@@ -74,18 +76,27 @@ function Exercises() {
         </div>
         <div className={'exercises__display'}>
           <div onClick={handleOn} className={'exercises__box exercises__box-add'}> Add exercise</div>
-          {exercises.map(el => {
+          {exercises.map(exercise => {
             return (
               <div className={'exercises__box'}
                    onClick={(event) => {
                      handleInfoOn();
-                     handleEXInfo(event);
-                   }} key={el.id}> {el.name}</div>
+                     handleEXInfo(exercise);
+                   }} key={exercise.id}> {exercise.name}</div>
             )
           })}
         </div>
-        <AddNewExercise isAddNewExVisible={isAddNewExVisible} handleAddNewExVisible={handleAddNewExVisible}/>
-        <ShowExerciseInfo isExInfoVisible={isExInfoVisible} handleExInfoVisible={handleExInfoVisible}/>
+        
+        <AddNewExercise
+          isAddNewExVisible={isAddNewExVisible}
+          handleAddNewExVisible={handleAddNewExVisible}/>
+          
+        <ShowExerciseInfo
+          isExInfoVisible={isExInfoVisible}
+          handleExInfoVisible={handleExInfoVisible}
+          clearExerciseInfo={clearExerciseInfo}
+          exerciseInfo={exerciseInfo}/>
+          
       </div>
     </section>
   );
