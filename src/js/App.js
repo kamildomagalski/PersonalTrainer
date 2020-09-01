@@ -16,7 +16,7 @@ function App() {
         <Router>
           <Switch>
             <Route path={'/'} exact render={(props) => <LandingPage {...props}/>}/>
-            <Route path={'/app'} render={ (props) => <AppMainPulpit {...props}/>} />
+            <Route path={'/app'} render={(props) => <AppMainPulpit {...props}/>} />
           </Switch>
         </Router>
     </>

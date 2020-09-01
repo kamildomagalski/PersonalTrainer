@@ -1,18 +1,51 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Logo from "../components/logo";
 import {Route, Link} from 'react-router-dom'
 import Calendar from "./calendar";
 import History from "./history";
 import Plans from "./plans";
+import Exercises from './exercises'
 import LogOutButton from "../components/logic_components/LogOutButton";
 import withAuthorization from '../components/Session/withAuthorization'
+import firebase from "firebase";
+
 
 function AppMainPulpit() {
   const [isActive, setActive] = useState(false)
+  const [userData, setUserData ]= useState({
+    name: '',
+    text: ''
+  })
+  const userId= firebase.auth().currentUser.uid;
+  const rootRef= firebase.database().ref('users/' + userId);
+
+  const nameRef= rootRef.child('username');
+  const textRef= rootRef.child('text');
+  
+  useEffect(()=>{
+    nameRef.on('value', snap => {
+      setUserData(prevState => ({
+        ...prevState,
+        name: snap.val(),
+      }))
+    })
+    textRef.on('value', snap => {
+      setUserData(prevState => ({
+        ...prevState,
+        text: snap.val(),
+      }))
+    })
+  },[])
+  
+
+  
+  
   
   const toggleMenu = () => {
     setActive(prevState => !prevState)
   }
+  
+  
   
   return (
     <section className={'appScreen'}>
@@ -23,11 +56,11 @@ function AppMainPulpit() {
         <ul className={isActive ? 'appHeader__menu appMenu-active' : 'appHeader__menu'}>
           <li className={'appHeader__user'}>
             <div className={'appHeader__avatar'}/>
-            <p className={'appHeader__userName'}>Username</p>
+            <p className={'appHeader__userName'}>{userData.name}</p>
           </li>
           <Link to={'/app/calendar'} onClick={toggleMenu} className={'link'}>Calendar</Link>
           <Link to={'/app/history'} onClick={toggleMenu} className={'link'}>History</Link>
-          <Link to={'/app/history'} onClick={toggleMenu} className={'link'}>Exercises</Link>
+          <Link to={'/app/exercises'} onClick={toggleMenu} className={'link'}>Exercises</Link>
           <Link to={'/app/plans'} onClick={toggleMenu} className={'link'}>Plans</Link>
           <LogOutButton className={'link'}/>
         </ul>
@@ -42,6 +75,8 @@ function AppMainPulpit() {
           <Route path={'/app/calendar'} component={Calendar}/>
           <Route path={'/app/history'} component={History}/>
           <Route path={'/app/plans'} component={Plans}/>
+          <Route path={'/app/exercises'} component={Exercises}/>
+          
         </div>
       </div>
     </section>
