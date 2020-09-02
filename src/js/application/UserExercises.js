@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ShowExerciseInfo from "./ShowExerciseInfo";
 
-function UserExercises({isUserExercisesVisible}) {
- return (
+
+function UserExercises({userExercises, isUserExercisesVisible  }) {
+  const [exerciseInfo, setExerciseInfo] = useState([])
+  const [isExInfoVisible, setExInfoVisible] = useState(false)
+  
+  const handleInfoOn = () => handleExInfoVisible(true)
+  const handleEXInfo = (exercise) => {
+    setExerciseInfo(exercise);
+  }
+  const handleExInfoVisible = (value) => {
+    setExInfoVisible(value);
+  }
+  const clearExerciseInfo = () => {
+    setExerciseInfo([])
+  }
+  return (
    <div className={isUserExercisesVisible ? 'userExercises__search' : 'userExercises__search hidden' }>
      <div className={'userExercises__filter'}>
        <form className={'userExercises__form'}>
@@ -21,8 +36,26 @@ function UserExercises({isUserExercisesVisible}) {
        </form>
      </div>
      <div className={'userExercises__display'}>
-     
+       {userExercises.map(exercise => {
+         return (
+           <div className={'allExercises__box'}
+                key={exercise.id}>
+             <button onClick={() => {
+               handleInfoOn();
+               handleEXInfo(exercise);
+             }}>Show info
+             </button>
+             
+             <p className={'boxTitle'}>{exercise.name}</p>
+           </div>
+         )
+       })}
      </div>
+     <ShowExerciseInfo
+       isExInfoVisible={isExInfoVisible}
+       handleExInfoVisible={handleExInfoVisible}
+       clearExerciseInfo={clearExerciseInfo}
+       exerciseInfo={exerciseInfo}/>
   </div>
  );
 }

@@ -28,7 +28,7 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
       doneDate: []
     }
     
-    rootRef.child('userExercise').child(exercise.id).update(addData)
+    rootRef.child('userExercise').child(exercise.id).update(addData);
   }
   
   

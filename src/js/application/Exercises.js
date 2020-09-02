@@ -21,11 +21,17 @@ function Exercises({userData}) {
     setUserExercisesVisible(true);
   }
   const userId = userData.id;
+  console.log(userId);
+  const path = 'users/' + userId
   
   const rootRef = firebase.database().ref();
   const exercisesRef = rootRef.child('exercises')
-  // const userExercisesRef = rootRef.child('users/' + userId + '/userExercise') //ta wersja niedziała
-  const userExercisesRef = rootRef.child(`users/F2SlqTdHdQRhSrw1BkmSE4s4l053/userExercise`)
+  // const userExercisesRef = rootRef.child('users/' + userId + '/userExercise') // ta wersja niedziała
+  const userExercisesRef = rootRef.child(`users/R4fwvfx4BAXrox6pv7dXIojeOnh2/userExercise`) // ta wersja działa
+  // const userExercisesRef = rootRef.child(path).child('userExercise') // ta wersja niedziała
+  
+  //zapytać dlaczego jak zmienię 'userExercise' na 'userExercises'
+  // to czasami dane ładują się na serwer a po rerenderze komponentu znikają z serwera?
 
   useEffect(() => {
     exercisesRef.on("value", snap => {
@@ -51,7 +57,6 @@ function Exercises({userData}) {
         tmpUser.push({...values[key], id: newKey});
       }
       setUserExercises(tmpUser);
-
     })
   }, [])
   console.log(userExercises);
@@ -75,7 +80,7 @@ function Exercises({userData}) {
         
         <AllExercises exercises={exercises} isAllExercisesVisible={isAllExercisesVisible} userData={userData}/>
         
-        <UserExercises exercises={exercises} isUserExercisesVisible={isUserExercisesVisible}/>
+        <UserExercises userExercises={userExercises} isUserExercisesVisible={isUserExercisesVisible}/>
       </div>
     </section>
   );
