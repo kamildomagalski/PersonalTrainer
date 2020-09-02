@@ -19,7 +19,7 @@ const SignUpForm = ({firebase, handleOff}) => {
           .user(authUser.user.uid)
           .set({
             username: initialState.username,
-            email: initialState.email,
+            email: initialState.email
           })
       })
       .then(isAuth => {

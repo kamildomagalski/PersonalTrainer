@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import AddNewExercise from "./AddNewExercise";
 import ShowExerciseInfo from "./ShowExerciseInfo";
 import AddExerciseBtn from "../components/AddExerciseBtn";
+import firebase from "firebase";
 
 
 function AllExercises({exercises, isAllExercisesVisible, userData}) {
@@ -12,7 +13,27 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
   const handleOn = () => handleAddNewExVisible(true)
   const handleInfoOn = () => handleExInfoVisible(true)
   
-  console.log(userData.id);
+  const userId = userData.id;
+  const rootRef = firebase.database().ref('users/' + userId);
+  const rootRef2 = firebase.database().ref('users/' + userId +'/');
+  
+  const handleChooseExercise = (exercise) => {
+    const addData = {
+      name: exercise.name,
+      difficulty: exercise.name,
+      type: exercise.name,
+      muscleGroup: exercise.name,
+      img: exercise.name,
+      description: exercise.name,
+      planDate: [],
+      doneDate: []
+    }
+    const key = exercise.id
+    console.log('ID Usera: '+ userData.id)
+    console.log(key);
+    rootRef.child('userExercise').child(key).update(addData)
+  }
+  
   
   const handleEXInfo = (exercise) => {
     setExerciseInfo(exercise);
@@ -20,15 +41,13 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
   const clearExerciseInfo = () => {
     setExerciseInfo([])
   }
-
-  
   const handleExInfoVisible = (value) => {
     setExInfoVisible(value);
   }
   const handleAddNewExVisible = (value) => {
     setAddNewExVisible(value)
   }
-
+  
   return (
     <div className={isAllExercisesVisible ? 'allExercises__search' : 'allExercises__search hidden'}>
       <div className={'allExercises__filter'}>
@@ -63,8 +82,10 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
                 handleEXInfo(exercise);
               }}>Show info
               </button>
-
-              <AddExerciseBtn/>
+              
+              <AddExerciseBtn onClick={() => {
+                handleChooseExercise(exercise)
+              }}/>
               <p className={'boxTitle'}>{exercise.name}</p>
             </div>
           )

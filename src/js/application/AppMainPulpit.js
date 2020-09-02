@@ -10,12 +10,12 @@ import withAuthorization from '../components/Session/withAuthorization'
 import firebase from "firebase";
 
 
-function AppMainPulpiA() {
+function AppMainPulpit() {
   const [isActive, setActive] = useState(false)
   const [userData, setUserData ]= useState({
     name: '',
     text: '',
-    id:''
+    id:'',
   })
   const userId= firebase.auth().currentUser.uid;
   const rootRef= firebase.database().ref('users/' + userId);
@@ -29,11 +29,11 @@ function AppMainPulpiA() {
         ...prevState,
         name: snap.val(),
       }))
+      rootRef.update({userExercises : {}})
     })
     textRef.on('value', snap => {
       setUserData(prevState => ({
         ...prevState,
-        text: snap.val(),
         id: userId
       }))
     })
@@ -85,4 +85,4 @@ function AppMainPulpiA() {
 }
 const condition = isAuth => !!isAuth;
 
-export default withAuthorization(condition) (AppMainPulpiA);
+export default withAuthorization(condition) (AppMainPulpit);

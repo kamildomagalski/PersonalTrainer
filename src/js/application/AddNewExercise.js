@@ -11,8 +11,7 @@ function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
   type: '',
   muscleGroup: '',
   img: '',
-  description: '',
-  users: ''
+  description: ''
  })
  
  const handleOff=()=>{

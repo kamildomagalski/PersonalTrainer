@@ -9,9 +9,7 @@ function Exercises({userData}) {
   const [isLoaded, setLoaded] = useState(false)
   const [isAllExercisesVisible, setAllExercisesVisible]= useState(false)
   const [isUserExercisesVisible, setUserExercisesVisible]= useState(true)
-
   
-
   
   const handleAllExercisesOn= () =>{
     setAllExercisesVisible(true);
