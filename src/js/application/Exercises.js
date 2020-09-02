@@ -6,6 +6,7 @@ import UserExercises from "./UserExercises";
 
 function Exercises({userData}) {
   const [exercises, setExercises] = useState([])
+  const [userExercises, setUserExercises] = useState([])
   const [isLoaded, setLoaded] = useState(false)
   const [isAllExercisesVisible, setAllExercisesVisible]= useState(false)
   const [isUserExercisesVisible, setUserExercisesVisible]= useState(true)
@@ -19,29 +20,41 @@ function Exercises({userData}) {
     setAllExercisesVisible(false);
     setUserExercisesVisible(true);
   }
-
+  const userId = userData.id;
+  
   const rootRef = firebase.database().ref();
   const exercisesRef = rootRef.child('exercises')
-  
+  // const userExercisesRef = rootRef.child('users/' + userId + '/userExercise') //ta wersja niedziała
+  const userExercisesRef = rootRef.child(`users/F2SlqTdHdQRhSrw1BkmSE4s4l053/userExercise`)
+
   useEffect(() => {
     exercisesRef.on("value", snap => {
-      // console.log(snap.uid);
       const values = snap.val();
       const tmp = [];
-      // const tmpUser = [];
       let newKey;
       for (const key in values) {
         newKey = key;
         tmp.push({...values[key], id: newKey});
       }
       setExercises(tmp);
- // for(const key in values){
- //   if(values[key] == )
- // }
       setLoaded(true)
+  
+    })
+    userExercisesRef.on("value", snap => {
+      console.log('test');
+      let values = snap.val();
+      console.log(values);
+      const tmpUser = [];
+      let newKey;
+      for (const key in values) {
+        newKey = key;
+        tmpUser.push({...values[key], id: newKey});
+      }
+      setUserExercises(tmpUser);
+
     })
   }, [])
-  
+  console.log(userExercises);
   if (isLoaded !== true) {
     return <h1 className={'exercises__title'}>Loading data...</h1>
   }

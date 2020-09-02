@@ -15,8 +15,7 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
   
   const userId = userData.id;
   const rootRef = firebase.database().ref('users/' + userId);
-  const rootRef2 = firebase.database().ref('users/' + userId +'/');
-  
+
   const handleChooseExercise = (exercise) => {
     const addData = {
       name: exercise.name,
@@ -28,10 +27,8 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
       planDate: [],
       doneDate: []
     }
-    const key = exercise.id
-    console.log('ID Usera: '+ userData.id)
-    console.log(key);
-    rootRef.child('userExercise').child(key).update(addData)
+    
+    rootRef.child('userExercise').child(exercise.id).update(addData)
   }
   
   
