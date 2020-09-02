@@ -54,16 +54,25 @@
     background-color: $bg-color_transparent;
     margin: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    .boxTitle{
+      font-family: $font-primary;
+      font-size: 1.0rem;
+      color: $text_color_dark;
+      margin: 3px 0;
+    }
   }
 
   &__box-add {
     border: 2px solid $border_color_red;
+    justify-content: center;
 
   }
 
   .hidden {
     display: none;
   }
+
 }
