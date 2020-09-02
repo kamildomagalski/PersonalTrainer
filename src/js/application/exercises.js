@@ -9,7 +9,7 @@ function Exercises() {
   const [isLoaded, setLoaded] = useState(false)
   const [isAllExercisesVisible, setAllExercisesVisible]= useState(false)
   const [isUserExercisesVisible, setUserExercisesVisible]= useState(true)
-  
+  const [userExercises, setUserExercises]= useState([])
   
   const handleAllExercisesOn= () =>{
     setAllExercisesVisible(true);
@@ -35,6 +35,7 @@ function Exercises() {
         tmp.push({...values[key], id: newKey});
       }
       setExercises(tmp);
+ 
       setLoaded(true)
     })
   }, [])
@@ -58,6 +59,7 @@ function Exercises() {
         </div>
         
         <AllExercises exercises={exercises} isAllExercisesVisible={isAllExercisesVisible}/>
+        
         <UserExercises exercises={exercises} isUserExercisesVisible={isUserExercisesVisible}/>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AddNewExercise from "./AddNewExercise";
 import ShowExerciseInfo from "./ShowExerciseInfo";
+import AddExercise from "../components/AddExercise";
 
 
 function AllExercises({exercises,isAllExercisesVisible }) {
@@ -52,7 +53,9 @@ function AllExercises({exercises,isAllExercisesVisible }) {
                 onClick={(event) => {
                   handleInfoOn();
                   handleEXInfo(exercise);
-                }} key={exercise.id}> {exercise.name}</div>
+                }} key={exercise.id}>
+             <AddExercise/>
+             {exercise.name}</div>
          )
        })}
      </div>
