@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-function CloseX({onClick}) {
+function CloseXBtn({onClick}) {
  
   
  return (
@@ -11,4 +11,4 @@ function CloseX({onClick}) {
    </div>
  );
 }
-export default CloseX;
+export default CloseXBtn;

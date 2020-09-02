@@ -4,12 +4,14 @@ import firebase from "firebase";
 import AllExercises from "./AllExercises";
 import UserExercises from "./UserExercises";
 
-function Exercises() {
+function Exercises({userData}) {
   const [exercises, setExercises] = useState([])
   const [isLoaded, setLoaded] = useState(false)
   const [isAllExercisesVisible, setAllExercisesVisible]= useState(false)
   const [isUserExercisesVisible, setUserExercisesVisible]= useState(true)
-  const [userExercises, setUserExercises]= useState([])
+
+  
+
   
   const handleAllExercisesOn= () =>{
     setAllExercisesVisible(true);
@@ -19,23 +21,25 @@ function Exercises() {
     setAllExercisesVisible(false);
     setUserExercisesVisible(true);
   }
-  
+
   const rootRef = firebase.database().ref();
   const exercisesRef = rootRef.child('exercises')
-  // console.log(exercisesRef);
   
   useEffect(() => {
     exercisesRef.on("value", snap => {
       // console.log(snap.uid);
       const values = snap.val();
       const tmp = [];
+      // const tmpUser = [];
       let newKey;
       for (const key in values) {
         newKey = key;
         tmp.push({...values[key], id: newKey});
       }
       setExercises(tmp);
- 
+ // for(const key in values){
+ //   if(values[key] == )
+ // }
       setLoaded(true)
     })
   }, [])
@@ -58,7 +62,7 @@ function Exercises() {
           <h3 className={'tab__text'}>Your Exercises</h3>
         </div>
         
-        <AllExercises exercises={exercises} isAllExercisesVisible={isAllExercisesVisible}/>
+        <AllExercises exercises={exercises} isAllExercisesVisible={isAllExercisesVisible} userData={userData}/>
         
         <UserExercises exercises={exercises} isUserExercisesVisible={isUserExercisesVisible}/>
       </div>

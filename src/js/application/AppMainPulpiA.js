@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import Logo from "../components/logo";
+import Logo from "../components/Logo";
 import {Route, Link} from 'react-router-dom'
-import Calendar from "./calendar";
-import History from "./history";
-import Plans from "./plans";
-import Exercises from './exercises'
+import Calendar from "./Calendar";
+import History from "./History";
+import Plans from "./Plans";
+import Exercises from './Exercises'
 import LogOutButton from "../components/logic_components/LogOutButton";
 import withAuthorization from '../components/Session/withAuthorization'
 import firebase from "firebase";
 
 
-function AppMainPulpit() {
+function AppMainPulpiA() {
   const [isActive, setActive] = useState(false)
   const [userData, setUserData ]= useState({
     name: '',
-    text: ''
+    text: '',
+    id:''
   })
   const userId= firebase.auth().currentUser.uid;
   const rootRef= firebase.database().ref('users/' + userId);
@@ -33,11 +34,11 @@ function AppMainPulpit() {
       setUserData(prevState => ({
         ...prevState,
         text: snap.val(),
+        id: userId
       }))
     })
+    
   },[])
-  
-
   
   
   
@@ -75,7 +76,7 @@ function AppMainPulpit() {
           <Route path={'/app/calendar'} component={Calendar}/>
           <Route path={'/app/history'} component={History}/>
           <Route path={'/app/plans'} component={Plans}/>
-          <Route path={'/app/exercises'} component={Exercises}/>
+          <Route path={'/app/exercises'} render={(props) => <Exercises {...props} userData={userData}/>}/>
           
         </div>
       </div>
@@ -84,4 +85,4 @@ function AppMainPulpit() {
 }
 const condition = isAuth => !!isAuth;
 
-export default withAuthorization(condition) (AppMainPulpit);
+export default withAuthorization(condition) (AppMainPulpiA);

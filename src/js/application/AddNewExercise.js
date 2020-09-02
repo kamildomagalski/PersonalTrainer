@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CloseX from "../components/closeX";
+import CloseXBtn from "../components/CloseXBtn";
 import firebase from "firebase";
 
 function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
@@ -11,7 +11,8 @@ function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
   type: '',
   muscleGroup: '',
   img: '',
-  description: ''
+  description: '',
+  users: ''
  })
  
  const handleOff=()=>{
@@ -46,7 +47,7 @@ function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
  return (
    <div className={isAddNewExVisible ? 'addNewExercise' : 'addNewExercise hidden'}>
     <div className={'board addNewExercise__board'}>
-     <CloseX onClick={handleOff}/>
+     <CloseXBtn onClick={handleOff}/>
      <h2 className={'addNewExercise__title'}>Add new exercise</h2>
      <form className={'addNewExercise__form'} onSubmit={handleSubmit}>
       <input type={'text'} name={'name'} value={addNewExercise.name} onChange={handleAddNewEx}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserExercises({exercises ,isUserExercisesVisible}) {
+function UserExercises({isUserExercisesVisible}) {
  return (
    <div className={isUserExercisesVisible ? 'userExercises__search' : 'userExercises__search hidden' }>
      <div className={'userExercises__filter'}>

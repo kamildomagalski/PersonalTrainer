@@ -2,12 +2,12 @@ import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-function AddExercise({onClick}) {
+function AddExerciseBtn({onClick}) {
  
  return (
-  <div className={'addExercise'}>
+  <div className={'addExercise'} onClick={onClick}>
     <FontAwesomeIcon className={'addExercise__icon'} icon="plus" />
   </div>
  );
 }
-export default AddExercise;
+export default AddExerciseBtn;

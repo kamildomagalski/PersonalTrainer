@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import AddNewExercise from "./AddNewExercise";
 import ShowExerciseInfo from "./ShowExerciseInfo";
-import AddExercise from "../components/AddExercise";
+import AddExerciseBtn from "../components/AddExerciseBtn";
 
 
-function AllExercises({exercises, isAllExercisesVisible}) {
+function AllExercises({exercises, isAllExercisesVisible, userData}) {
   const [exerciseInfo, setExerciseInfo] = useState([])
   const [isAddNewExVisible, setAddNewExVisible] = useState(false)
   const [isExInfoVisible, setExInfoVisible] = useState(false)
@@ -12,12 +12,15 @@ function AllExercises({exercises, isAllExercisesVisible}) {
   const handleOn = () => handleAddNewExVisible(true)
   const handleInfoOn = () => handleExInfoVisible(true)
   
+  console.log(userData.id);
+  
   const handleEXInfo = (exercise) => {
     setExerciseInfo(exercise);
   }
   const clearExerciseInfo = () => {
     setExerciseInfo([])
   }
+
   
   const handleExInfoVisible = (value) => {
     setExInfoVisible(value);
@@ -25,7 +28,7 @@ function AllExercises({exercises, isAllExercisesVisible}) {
   const handleAddNewExVisible = (value) => {
     setAddNewExVisible(value)
   }
-  
+
   return (
     <div className={isAllExercisesVisible ? 'allExercises__search' : 'allExercises__search hidden'}>
       <div className={'allExercises__filter'}>
@@ -60,7 +63,8 @@ function AllExercises({exercises, isAllExercisesVisible}) {
                 handleEXInfo(exercise);
               }}>Show info
               </button>
-              <AddExercise/>
+
+              <AddExerciseBtn/>
               <p className={'boxTitle'}>{exercise.name}</p>
             </div>
           )

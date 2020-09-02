@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import CloseX from "../components/closeX";
+import React from 'react';
+import CloseXBtn from "../components/CloseXBtn";
 
 function ShowExerciseInfo({isExInfoVisible, handleExInfoVisible, clearExerciseInfo, exerciseInfo}) {
   
@@ -14,7 +14,7 @@ function ShowExerciseInfo({isExInfoVisible, handleExInfoVisible, clearExerciseIn
   return (
     <div className={isExInfoVisible ? 'exerciseInfo' : 'exerciseInfo hidden'}>
       <div className={'board exerciseInfo__board'}>
-        <CloseX onClick={() => {
+        <CloseXBtn onClick={() => {
           handleOff();
           handleClearInfo();
         }}/>

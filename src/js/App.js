@@ -4,8 +4,8 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faTimes, faPlus} from '@fortawesome/free-solid-svg-icons'
 
-import LandingPage from "./landing_page/landingPage";
-import AppMainPulpit from "./application/appMainPulpit";
+import LandingPage from "./landing_page/LandingPage";
+import AppMainPulpit from "./application/AppMainPulpiA";
 
 import {withAuthentication} from './components/Session/indexSession'
 
