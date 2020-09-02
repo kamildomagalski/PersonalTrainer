@@ -13,12 +13,12 @@ function ShowExerciseInfo({isExInfoVisible, handleExInfoVisible, clearExerciseIn
   
   return (
     <div className={isExInfoVisible ? 'exerciseInfo' : 'exerciseInfo hidden'}>
-      <div className={'board showExerciseInfo__board'}>
+      <div className={'board exerciseInfo__board'}>
         <CloseX onClick={() => {
           handleOff();
           handleClearInfo();
         }}/>
-        <div className={'exerciseInfo__image'}></div>
+        <div className={'exerciseInfo__image'}>image</div>
         <div className={'exerciseInfo__wrapper'}>
           <h3 className={'exerciseInfo__title'}>Workout:</h3>
           <p className={'exerciseInfo__subtitle'}>{exerciseInfo.name}</p>

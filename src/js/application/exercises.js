@@ -1,31 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import firebase from "firebase";
-import AddNewExercise from "./AddNewExercise";
-import ShowExerciseInfo from "./ShowExerciseInfo";
+
+import AllExercises from "./AllExercises";
+import UserExercises from "./UserExercises";
 
 function Exercises() {
   const [exercises, setExercises] = useState([])
   const [isLoaded, setLoaded] = useState(false)
-  const [isAddNewExVisible, setAddNewExVisible] = useState(false)
-  const [isExInfoVisible, setExInfoVisible] = useState(false)
-  const [exerciseInfo, setExerciseInfo] = useState([])
+  const [isAllExercisesVisible, setAllExercisesVisible]= useState(false)
+  const [isUserExercisesVisible, setUserExercisesVisible]= useState(true)
   
   
-  const handleExInfoVisible = (value) => {
-    setExInfoVisible(value);
+  const handleAllExercisesOn= () =>{
+    setAllExercisesVisible(true);
+    setUserExercisesVisible(false);
   }
-  const handleAddNewExVisible = (value) => {
-    setAddNewExVisible(value)
+  const handleUserExercisesOn= () =>{
+    setAllExercisesVisible(false);
+    setUserExercisesVisible(true);
   }
-  const handleEXInfo = (exercise) => {
-    setExerciseInfo(exercise);
-  }
-  const clearExerciseInfo= ()=> {
-    setExerciseInfo([])
-  }
-  
-  const handleOn = () => handleAddNewExVisible(true)
-  const handleInfoOn = () => handleExInfoVisible(true)
   
   const rootRef = firebase.database().ref();
   const exercisesRef = rootRef.child('exercises')
@@ -50,53 +43,22 @@ function Exercises() {
     return <h1 className={'exercises__title'}>Loading data...</h1>
   }
   
-  // console.log(typeof addNewExercise);
-  
   
   return (
     <section className={'exercises'}>
       <h2 className={'exercises__title'}>Exercises</h2>
       <div className={'wrapper'}>
-        <div className={'exercises__search'}>
-          <form className={'exercises__form'}>
-            <select name={'difficulty'} placeholder={'difficulty'}>
-              <option value={'easy'}>Easy</option>
-              <option value={'medium'}>Medium</option>
-              <option value={'hard'}>Hard</option>
-            </select>
-            <select name={'muscle group'} placeholder={'muscle group'}>
-              <option value={'upper body'}>Upper body</option>
-              <option value={'lower body'}>Lower body</option>
-            </select>
-            <select name={'type'} placeholder={'type'}>
-              <option value={'indoor'}>Indoor</option>
-              <option value={'outdoor'}>Outdoor</option>
-            </select>
-          </form>
-        </div>
-        <div className={'exercises__display'}>
-          <div onClick={handleOn} className={'exercises__box exercises__box-add'}> Add exercise</div>
-          {exercises.map(exercise => {
-            return (
-              <div className={'exercises__box'}
-                   onClick={(event) => {
-                     handleInfoOn();
-                     handleEXInfo(exercise);
-                   }} key={exercise.id}> {exercise.name}</div>
-            )
-          })}
+        
+        <div className={ isAllExercisesVisible ? 'tab tab__search activeBorder' : 'tab tab__search'} onClick={handleAllExercisesOn}>
+          <h3 className={'tab__text'}>Search</h3>
         </div>
         
-        <AddNewExercise
-          isAddNewExVisible={isAddNewExVisible}
-          handleAddNewExVisible={handleAddNewExVisible}/>
-          
-        <ShowExerciseInfo
-          isExInfoVisible={isExInfoVisible}
-          handleExInfoVisible={handleExInfoVisible}
-          clearExerciseInfo={clearExerciseInfo}
-          exerciseInfo={exerciseInfo}/>
-          
+        <div className={isUserExercisesVisible ? 'tab tab__yourExercises activeBorder' : 'tab tab__yourExercises'} onClick={handleUserExercisesOn}>
+          <h3 className={'tab__text'}>Your Exercises</h3>
+        </div>
+        
+        <AllExercises exercises={exercises} isAllExercisesVisible={isAllExercisesVisible}/>
+        <UserExercises exercises={exercises} isUserExercisesVisible={isUserExercisesVisible}/>
       </div>
     </section>
   );
