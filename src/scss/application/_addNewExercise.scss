@@ -1,0 +1,111 @@
+.addNewExercise {
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  &__board {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 30px;
+    width: 80vw;
+    max-width: 300px;
+    @include desktop {
+      padding: 20px 30px;
+      width: 50vw;
+      max-width: 400px;
+
+    }
+  }
+
+  &__title {
+    font-family: $font_primary;
+    color: $text_color_green;
+    font-size: 1.5rem;
+    margin: 20px 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    padding: 0 20px 20px;
+    @include tablet{
+      align-items: center;
+    }
+  }
+
+  &__input {
+    width: 100%;
+
+    border: 2px solid $border_color_green;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-family: $font_primary;
+    font-size: 0.9rem;
+    padding: 5px 0 5px 10px;
+  }
+  &__select{
+    margin: 5px 0;
+    width: 100%;
+    @include tablet{
+      max-width: 120px;
+    }
+    @include desktop{
+      max-width: 170px;
+
+    }
+
+  }
+.selectRow{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  @include tablet{
+    flex-direction: row;
+
+  }
+  &__text{
+    font-family: $font_primary;
+    font-size: 1rem;
+    color: $text_color_green
+  }
+}
+  &__name {
+  }
+
+  &__description {
+    height: 100px;
+  }
+  .btn-invalid{
+    background-color: #acafb1;
+  }
+  &__btn{
+    font-size: 1rem;
+    width: 100%;
+    padding: 7px 10px;
+    margin: 10px 0 0;
+    @include tablet{
+      font-size: 1.1rem;
+      width: unset;
+      padding: 7px 20px;
+      margin: 15px 0 0;
+
+    }
+    @include desktop{
+
+
+    }
+  }
+}

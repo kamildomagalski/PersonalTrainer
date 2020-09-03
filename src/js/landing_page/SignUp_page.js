@@ -1,7 +1,7 @@
 import React from 'react';
-import CloseX from "../components/closeX";
-import {FirebaseContext} from '../components/Firebase/indexFirebase';
-import SignUpForm from "../components/logic_components/signUp_form";
+import CloseXBtn from "../components/CloseXBtn";
+import {FirebaseContext} from '../components/Firebase/IndexFirebase';
+import SignUpForm from "../components/logic_components/SignUp_form";
 
 function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
   
@@ -13,7 +13,7 @@ function SignUpPage({isSignUpShown, handleSignUpVisible, handleLoginVisible}) {
   return (
     <section className={isSignUpShown ? 'signUp' : 'signUp hidden'}>
       <div className={'board signUp__board'}>
-        <CloseX onClick={handleOff}/>
+        <CloseXBtn onClick={handleOff}/>
         <h2 className={'signUp__title'}>Sign Up Now!</h2>
         <FirebaseContext.Consumer>
           {firebase => <SignUpForm firebase={firebase} handleOff={handleOff}/>}

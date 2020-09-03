@@ -1,7 +1,7 @@
 import React from 'react';
-import CloseX from "../components/closeX";
-import {FirebaseContext} from '../components/Firebase/indexFirebase';
-import LogInForm from "../components/logic_components/logIn_form";
+import CloseXBtn from "../components/CloseXBtn";
+import {FirebaseContext} from '../components/Firebase/IndexFirebase';
+import LogInForm from "../components/logic_components/LogIn_form";
 
 function LogInPage({history, isVisible, onVisibilityChange, handleSignUpVisible}) {
   
@@ -16,7 +16,7 @@ function LogInPage({history, isVisible, onVisibilityChange, handleSignUpVisible}
   return (
     <section className={isVisible ? 'logIn' : 'logIn hidden'}>
       <div className={'board logIn__board'}>
-        <CloseX onClick={handleOff}/>
+        <CloseXBtn onClick={handleOff}/>
         <h2 className={'logIn__title'}>Welcome to</h2>
         <h2 className={'logIn__title'}>Personal Trainer!</h2>
         <FirebaseContext.Consumer>

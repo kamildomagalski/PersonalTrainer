@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {withFirebase} from '../Firebase/context';
+import {withFirebase} from '../Firebase/Context';
 import AuthUserContext from "./context";
 
 const withAuthorization = condition => Component => {

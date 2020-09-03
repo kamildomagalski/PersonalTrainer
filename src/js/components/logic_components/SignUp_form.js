@@ -9,19 +9,17 @@ const SignUpForm = ({firebase, handleOff}) => {
     passwordTwo: '',
     error: null
   })
-  // let username;
-  // let email;
+
   const handleSubmit = (event) => {
     event.preventDefault()
     firebase
       .doCreateUserWithEmailAndPassword(initialState.email, initialState.passwordOne)
       .then(authUser => {
-        console.log(authUser.user.uid);
         return firebase
           .user(authUser.user.uid)
           .set({
             username: initialState.username,
-            email: initialState.email,
+            email: initialState.email
           })
       })
       .then(isAuth => {

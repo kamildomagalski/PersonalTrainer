@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 
-import Header from "./header";
-import DiscoverSection from "./discover_section";
-import FeaturesSection from "./features_section";
-import TakeALookSection from "./takeALook_section";
-import GetStartedSection from "./getStarted_section";
-import Footer from "./footer";
-import LogInPage from "./logIn_page";
-import SignUpPage from "./signUp_page";
+import Header from "./Header";
+import DiscoverSection from "./Discover_section";
+import FeaturesSection from "./Features_section";
+import TakeALookSection from "./TakeALook_section";
+import GetStartedSection from "./GetStarted_section";
+import Footer from "./Footer";
+import LogInPage from "./LogIn_page";
+import SignUpPage from "./SignUp_page";
 
 
 

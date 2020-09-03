@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
 
   &__title {
     font-family: $font-primary;
@@ -12,4 +14,51 @@
     margin: 20px 0;
   }
 
+  .wrapper {
+    position: relative;
+    background-color: $bg_color_transparent_light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+.tab{
+  background-color: $bg_color_transparent_light;
+  position: absolute;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -35px;
+  &__search {
+    width: 80px;
+    left: 130px;
+  }
+  &__yourExercises{
+    width: 130px;
+    left: 0;
+  }
+  &__text{
+    font-family: $font_primary;
+    font-size: 1.1rem;
+    color: $text_color_dark;
+  }
+
+
+}
+
+  .activeBorder{
+    //border: 1px solid $border_color_red;
+    border-bottom: 3px solid $border_color_red;
+    //border-top-left-radius: 5px ;
+    //border-top-right-radius: 5px ;
+    .tab__text{
+      color: $text_color_orange;
+    }
+  }
+
+  .hidden{
+    display: none;
+  }
 }

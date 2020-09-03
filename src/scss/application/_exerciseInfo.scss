@@ -1,0 +1,77 @@
+.exerciseInfo {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  @include desktop {
+
+  }
+
+  &__board {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 30px;
+    height: 70vh;
+    width: 80vw;
+    max-width: 710px;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 20px 30px;
+      height: 50vh;
+      width: 50vw;
+    }
+  }
+
+  &__image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    background-color: $text_color_orange;
+    flex-shrink: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+
+  }
+
+  &__title {
+    font-family: $font_primary;
+    color: $text-color_green;
+
+    font-size: 1.5rem;
+    margin: 20px 0 15px;
+  }
+
+  &__subtitle {
+    font-family: $font_primary;
+    color: $text-color_dark;
+
+    font-size: 1.1rem;
+  }
+
+  &__float {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 20px;
+  }
+  &__additional{
+    font-family: $font_primary;
+    font-size: 1rem;
+    color: $text-color_orange;
+  }
+}
