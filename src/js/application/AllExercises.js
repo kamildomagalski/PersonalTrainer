@@ -66,7 +66,7 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
       </div>
       <div className={'allExercises__display'}>
         <div className={'allExercises__box allExercises__box-add'}>
-          <button onClick={handleOn}>
+          <button className={'btn allExercises__btn'} onClick={handleOn}>
             Add exercise
           </button>
         </div>
@@ -74,7 +74,7 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
           return (
             <div className={'allExercises__box'}
                  key={exercise.id}>
-              <button onClick={(event) => {
+              <button className={'btn allExercises__btn'} onClick={(event) => {
                 handleInfoOn();
                 handleEXInfo(exercise);
               }}>Show info

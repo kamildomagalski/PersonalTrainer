@@ -57,6 +57,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    @include desktop{
+      height: 100px;
+      width: 100px;
+    }
     .boxTitle{
       font-family: $font-primary;
       font-size: 1.0rem;
@@ -68,7 +72,17 @@
   &__box-add {
     border: 2px solid $border_color_red;
     justify-content: center;
+    align-items: center;
 
+  }
+  &__btn{
+    font-size: 0.9rem;
+    padding: 5px;
+    margin: 5px 0;
+    @include desktop{
+      font-size: 0.9rem;
+      padding: 5px 5px;
+    }
   }
 
   .hidden {

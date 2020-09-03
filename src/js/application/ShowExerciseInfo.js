@@ -21,11 +21,17 @@ function ShowExerciseInfo({isExInfoVisible, handleExInfoVisible, clearExerciseIn
         <div className={'exerciseInfo__image'}>image</div>
         <div className={'exerciseInfo__wrapper'}>
           <h3 className={'exerciseInfo__title'}>Workout:</h3>
+          
           <p className={'exerciseInfo__subtitle'}>{exerciseInfo.name}</p>
           <h3 className={'exerciseInfo__title'}>Bodypart:</h3>
           <p className={'exerciseInfo__subtitle'}>{exerciseInfo.muscleGroup}</p>
           <h3 className={'exerciseInfo__title'}>Description:</h3>
           <p className={'exerciseInfo__subtitle'}>{exerciseInfo.description}</p>
+          
+        </div>
+        <div className={'exerciseInfo__float'}>
+          <p className={'exerciseInfo__additional'}>Difficulty: {exerciseInfo.difficulty}</p>
+          <p className={'exerciseInfo__additional'}>Type: {exerciseInfo.type}</p>
         </div>
       </div>
     </div>

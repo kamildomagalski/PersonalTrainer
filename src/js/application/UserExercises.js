@@ -40,7 +40,7 @@ function UserExercises({userExercises, isUserExercisesVisible  }) {
          return (
            <div className={'allExercises__box'}
                 key={exercise.id}>
-             <button onClick={() => {
+             <button className={'btn allExercises__btn'} onClick={() => {
                handleInfoOn();
                handleEXInfo(exercise);
              }}>Show info
