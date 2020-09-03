@@ -5,7 +5,7 @@ export default function LogInForm ({firebase, handleOff, history}) {
   
   const [logState, setLogState] = useState({
     email: '',
-    passwordOne: '',
+    password: '',
     error: null
   })
 
