@@ -20,13 +20,13 @@ function Header({onLoginClick}) {
 
   
   return (
-    <header className={'header'}>
+    <header className={'header'} >
       <div className={'header__logo'}>
         <Logo/>
       </div>
       <ul className={isActive ? 'header__menu menu-active' : 'header__menu'}>
         <a href={'/#'}>Home</a>
-        <a href={'/#'}>Features</a>
+        <a href={'/features'}>Features</a>
         <a href={'/#'}>Take a look</a>
         
           <AuthUserContext.Consumer>

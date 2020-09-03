@@ -33,9 +33,12 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    width: 300px;
-    height: 250px;
-    background-color: red;
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     border: 3px solid $border_color_green;
     margin: 10px;
     @include tablet{
@@ -47,10 +50,28 @@
       height: 250px;
     }
   }
+  &__element-1{
+    background-size: cover;
+
+    background-image: url("/images/calendar-img.png");
+  }
+  &__element2{
+    background-color: #B2EBF2;
+
+    background-image: url("/images/exercise3-img.png");
+  }
+  &__element3{
+    background-color: #B2EBF2;
+    background-image: url("/images/exercise4-img.png");
+  }
   &__text{
     font-family: $font-primary;
     font-size: 1.5rem;
     line-height: 1.7rem;
-    margin: 20px 0;
+    margin: 10px 0;
+    background-color: $bg-color_dark ;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: $text-color_green;
   }
 }
