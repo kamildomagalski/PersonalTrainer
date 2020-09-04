@@ -14,16 +14,15 @@
 
 }
 
-.month-picker{
+.underConstruction{
   display: flex;
-  overflow: auto;
-  .month{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 40px;
-    border: 1px solid grey ;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  &__title{
+    font-family: $font-primary;
+    font-size: 2.0rem;
+    color: black;
+    margin: 20px 0;
   }
 }
