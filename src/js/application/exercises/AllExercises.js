@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import AddNewExercise from "./AddNewExercise";
 import ShowExerciseInfo from "./ShowExerciseInfo";
-import AddExerciseBtn from "../components/AddExerciseBtn";
+import AddExerciseBtn from "../../components/AddExerciseBtn";
 import firebase from "firebase";
 
 
@@ -49,19 +49,28 @@ function AllExercises({exercises, isAllExercisesVisible, userData}) {
     <div className={isAllExercisesVisible ? 'allExercises__search' : 'allExercises__search hidden'}>
       <div className={'allExercises__filter'}>
         <form className={'allExercises__form'}>
-          <select name={'difficulty'} placeholder={'difficulty'}>
+          <div className={'selectRow'}>
+            <p className={'selectRow__text'}>Difficulty:</p>
+          <select className={'allExercises__select'} name={'difficulty'} placeholder={'difficulty'}>
             <option value={'easy'}>Easy</option>
             <option value={'medium'}>Medium</option>
             <option value={'hard'}>Hard</option>
           </select>
-          <select name={'muscle group'} placeholder={'muscle group'}>
+          </div>
+          <div className={'selectRow'}>
+            <p className={'selectRow__text'}>Muscle group:</p>
+          <select  className={'allExercises__select'} name={'muscle group'} placeholder={'muscle group'}>
             <option value={'upper body'}>Upper body</option>
             <option value={'lower body'}>Lower body</option>
           </select>
-          <select name={'type'} placeholder={'type'}>
+          </div>
+          <div className={'selectRow'}>
+            <p className={'selectRow__text'}>Type:</p>
+          <select className={'allExercises__select'} name={'type'} placeholder={'type'}>
             <option value={'indoor'}>Indoor</option>
             <option value={'outdoor'}>Outdoor</option>
           </select>
+          </div>
         </form>
       </div>
       <div className={'allExercises__display'}>

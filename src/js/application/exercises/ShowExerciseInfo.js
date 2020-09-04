@@ -1,5 +1,5 @@
 import React from 'react';
-import CloseXBtn from "../components/CloseXBtn";
+import CloseXBtn from "../../components/CloseXBtn";
 
 function ShowExerciseInfo({isExInfoVisible, handleExInfoVisible, clearExerciseInfo, exerciseInfo}) {
   

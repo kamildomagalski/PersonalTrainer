@@ -4,7 +4,7 @@ import {Route, Link} from 'react-router-dom'
 import Calendar from "./Calendar";
 import History from "./History";
 import Plans from "./Plans";
-import Exercises from './Exercises'
+import Exercises from './exercises/Exercises'
 import LogOutButton from "../components/logic_components/LogOutButton";
 import withAuthorization from '../components/Session/withAuthorization'
 import firebase from "firebase";

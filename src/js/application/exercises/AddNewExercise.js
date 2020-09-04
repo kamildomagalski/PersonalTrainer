@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CloseXBtn from "../components/CloseXBtn";
+import CloseXBtn from "../../components/CloseXBtn";
 import firebase from "firebase";
 
 function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
