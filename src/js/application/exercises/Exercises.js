@@ -21,17 +21,14 @@ function Exercises({userData}) {
     setUserExercisesVisible(true);
   }
   const userId = userData.id;
-  console.log(userId);
+
   const path = 'users/' + userId
   
   const rootRef = firebase.database().ref();
   const exercisesRef = rootRef.child('exercises')
-  // const userExercisesRef = rootRef.child('users/' + userId + '/userExercise') // ta wersja niedziała
-  const userExercisesRef = rootRef.child(`users/R4fwvfx4BAXrox6pv7dXIojeOnh2/userExercise`) // ta wersja działa
-  // const userExercisesRef = rootRef.child(path).child('userExercise') // ta wersja niedziała
-  
-  //zapytać dlaczego jak zmienię 'userExercise' na 'userExercises'
-  // to czasami dane ładują się na serwer a po rerenderze komponentu znikają z serwera?
+  const userExercisesRef = rootRef.child('users/' + userId + '/userExercise')
+  // const userExercisesRef = rootRef.child(`users/R4fwvfx4BAXrox6pv7dXIojeOnh2/userExercise`)
+
 
   useEffect(() => {
     exercisesRef.on("value", snap => {
@@ -47,9 +44,9 @@ function Exercises({userData}) {
   
     })
     userExercisesRef.on("value", snap => {
-      console.log('test');
+
       let values = snap.val();
-      console.log(values);
+
       const tmpUser = [];
       let newKey;
       for (const key in values) {
@@ -59,7 +56,7 @@ function Exercises({userData}) {
       setUserExercises(tmpUser);
     })
   }, [])
-  console.log(userExercises);
+
   if (isLoaded !== true) {
     return <h1 className={'exercises__title'}>Loading data...</h1>
   }

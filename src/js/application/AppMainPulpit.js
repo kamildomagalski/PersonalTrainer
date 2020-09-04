@@ -11,7 +11,7 @@ import firebase from "firebase";
 
 
 function AppMainPulpit() {
-  const [isActive, setActive] = useState(false)
+  const [isActive] = useState(false)
   const [userData, setUserData ]= useState({
     name: '',
     text: '',
@@ -41,13 +41,6 @@ function AppMainPulpit() {
   },[])
   
   
-  
-  const toggleMenu = () => {
-    setActive(prevState => !prevState)
-  }
-  
-  
-  
   return (
     <section className={'appScreen'}>
       <header className={'appHeader'}>
@@ -59,13 +52,13 @@ function AppMainPulpit() {
             <div className={'appHeader__avatar'}/>
             <p className={'appHeader__userName'}>{userData.name}</p>
           </li>
-          <Link to={'/app/calendar'} onClick={toggleMenu} className={'link'}>Calendar</Link>
-          <Link to={'/app/history'} onClick={toggleMenu} className={'link'}>History</Link>
-          <Link to={'/app/exercises'} onClick={toggleMenu} className={'link'}>Exercises</Link>
-          <Link to={'/app/plans'} onClick={toggleMenu} className={'link'}>Plans</Link>
+          <Link to={'/app/calendar'}  className={'link'}>Calendar</Link>
+          <Link to={'/app/history'}  className={'link'}>History</Link>
+          <Link to={'/app/exercises'}  className={'link'}>Exercises</Link>
+          <Link to={'/app/plans'}  className={'link'}>Plans</Link>
           <LogOutButton className={'link'}/>
         </ul>
-        <div onClick={toggleMenu} className={'appHeader__burger'}>
+        <div  className={'appHeader__burger'}>
           <div className={'line1'}/>
           <div className={'line2'}/>
           <div className={'line3'}/>
