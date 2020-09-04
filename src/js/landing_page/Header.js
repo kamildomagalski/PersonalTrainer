@@ -16,24 +16,25 @@ function Header({onLoginClick}) {
   }
   
   const ButtonAuth = () => (<Link to={'/app'}>Go to the App!</Link>)
-  const ButtonNoAuth = () => (<a href={'/#'} onClick={onChange}>Log in</a>)
+  const ButtonNoAuth = () => (<a href={'/#'} onClick={()=> {onChange(); toggleMenu()}}>Log in</a>)
+
   
   return (
-    <header className={'header'}>
+    <header className={'header'} >
       <div className={'header__logo'}>
         <Logo/>
       </div>
       <ul className={isActive ? 'header__menu menu-active' : 'header__menu'}>
-        <li><a href={'/#'}>Home</a></li>
-        <li><a href={'/#'}>Features</a></li>
-        <li><a href={'/#'}>Take a look</a></li>
-        <li>
+        <a href={'/#'}>Home</a>
+        <a href={'#features'}>Features</a>
+        <a href={'#look'}>Take a look</a>
+        
           <AuthUserContext.Consumer>
             {isAuth => {
               return isAuth != null ? <ButtonAuth/> : <ButtonNoAuth/>
             }}
           </AuthUserContext.Consumer>
-        </li>
+        
       </ul>
       <div onClick={toggleMenu} className={'header__burger'}>
         <div className={'line1'}></div>

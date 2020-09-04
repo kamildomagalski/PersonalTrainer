@@ -5,12 +5,13 @@
   align-items: center;
   height: 100px;
   width: 100%;
-  z-index: 2;
+  z-index: 1;
 
 
   &__logo {
     height: 80px;
     width: 150px;
+    min-width: 150px;
     margin-left: 40px;
   }
 
@@ -18,35 +19,45 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: absolute;
     top: -497px;
     width: 100%;
     background-color: $bg-color_dark;
     transition: 0.5s ease-in-out;
-    z-index: -1;
-    border-radius: 10px ;
+    z-index: 1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     @include tablet {
       position: static;
       flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
       margin-right: 40px;
       z-index: 1;
       //transform: unset;
       transition: unset;
-      width: unset;
+      width: 450px;
     }
 
-    li {
-      padding: 20px 0;
-      @include tablet {
-        padding: 0 0 0 20px;
-      }
-    }
 
     a {
+      width: 100%;
+      text-align: center;
       font-family: $font-secondary;
       font-size: 1.2rem;
       color: $text-color_green;
-      width: 100%;
+      padding: 20px 0;
+      @include tablet {
+        padding: 0 0 0 20px;
+        width: unset;
+
+      }
+      @include desktop{
+        padding: 0 0 0 30px;
+
+      }
 
     }
 

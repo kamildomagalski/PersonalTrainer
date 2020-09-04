@@ -15,25 +15,72 @@
     margin: 20px 0;
   }
 
-  .wrapper {
-    position: relative;
-    background-color: $bg_color_transparent_light;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
+  &__search {
+    height: calc(100vh - 220px);
+    @include desktop {
+      height: calc(100vh - 320px);
+
+    }
   }
 
   &__filter {
-    padding: 40px 0 20px;
-    height: 100px;
-    width: 700px;
+    display: flex;
+    padding: 10px 0 10px;
+    justify-content: center;
+    @include tablet {
+      padding: 40px 0 20px;
+
+    }
   }
 
   &__form {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    margin: 0 30px;
+    width: 100%;
+    max-width: 400px;
+    @include tablet {
+      flex-direction: row;
+      max-width: 600px;
+    }
+
+    .selectRow {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      @include tablet {
+        flex-direction: row;
+        margin: 0 5px;
+      }
+
+      &__text {
+        font-family: $font_primary;
+        font-size: 1rem;
+        color: $text_color_green
+      }
+    }
+  }
+
+  &__select {
+    margin: 5px 0;
+    width: 100%;
+    max-width: 120px;
+    border: 2px solid $border_color_green;
+    border-radius: 5px;
+    font-family: $font_primary;
+    font-size: 0.9rem;
+    padding: 3px 0 3px 10px;
+
+    @include tablet {
+    }
+    @include desktop {
+      max-width: 170px;
+
+    }
+
   }
 
   &__display {
@@ -41,7 +88,17 @@
     width: 100%;
     padding: 20px;
     flex-wrap: wrap;
+    justify-content: center;
+    //align-items: flex-start;
+    overflow-y: auto;
+    height: calc(100vh - 460px);
+    @include desktop {
+      height: calc(100vh - 440px);
+    }
+  }
 
+  @include tablet {
+    height: unset;
   }
 
   &__box {
@@ -60,7 +117,8 @@
 
   }
 
-  .hidden{
+  .hidden {
     display: none;
   }
+
 }

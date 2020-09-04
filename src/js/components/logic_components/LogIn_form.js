@@ -5,7 +5,7 @@ export default function LogInForm ({firebase, handleOff, history}) {
   
   const [logState, setLogState] = useState({
     email: '',
-    passwordOne: '',
+    password: '',
     error: null
   })
 
@@ -54,7 +54,7 @@ export default function LogInForm ({firebase, handleOff, history}) {
           value={logState.email}
           type={'email'}
           className={'logIn__input'}
-          placeholder={'Username'}
+          placeholder={'Email'}
           onChange={handleChange}
         />
         <input

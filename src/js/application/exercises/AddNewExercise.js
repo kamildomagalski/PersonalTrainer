@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CloseXBtn from "../components/CloseXBtn";
+import CloseXBtn from "../../components/CloseXBtn";
 import firebase from "firebase";
 
 function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
@@ -52,7 +52,7 @@ function AddNewExercise({isAddNewExVisible, handleAddNewExVisible}) {
           
           <input type={'text'} name={'name'} value={addNewExercise.name} onChange={handleAddNewEx}
                  className={'addNewExercise__input addNewExercise__name'} placeholder={'Add name'}/>
-          <textarea type={'text'} name={'description'} value={addNewExercise.description} onChange={handleAddNewEx}
+          <input type={'text'} name={'description'} value={addNewExercise.description} onChange={handleAddNewEx}
                  className={'addNewExercise__input addNewExercise__description'} placeholder={'Add description'}/>
                  
           <div className={'selectRow'}>

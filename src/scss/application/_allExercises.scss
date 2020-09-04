@@ -8,6 +8,11 @@
 
   &__search {
     position: relative;
+    height: calc(100vh - 220px);
+    @include desktop {
+      height: calc(100vh - 320px);
+
+    }
   }
 
   &__title {
@@ -24,26 +29,81 @@
     flex-direction: column;
     align-items: center;
     margin: 20px;
+    height: calc(100vh - 180px);
   }
 
   &__filter {
-    padding: 40px 0 20px;
-    height: 100px;
-    width: 700px;
+    display: flex;
+    padding: 10px 0 10px;
+    justify-content: center;
+    @include tablet {
+      padding: 40px 0 20px;
+
+    }
   }
 
   &__form {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    margin: 0 30px;
+    width: 100%;
+    max-width: 400px;
+    @include tablet {
+      flex-direction: row;
+      max-width: 600px;
+    }
+
+    .selectRow {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      @include tablet {
+        flex-direction: row;
+        margin: 0 5px;
+      }
+
+      &__text {
+        font-family: $font_primary;
+        font-size: 1rem;
+        color: $text_color_green
+      }
+    }
   }
+
+  &__select {
+    margin: 5px 0;
+    width: 100%;
+    max-width: 120px;
+    border: 2px solid $border_color_green;
+    border-radius: 5px;
+    font-family: $font_primary;
+    font-size: 0.9rem;
+    padding: 3px 0 3px 10px;
+
+    @include tablet {
+    }
+    @include desktop {
+      max-width: 170px;
+
+    }
+
+  }
+
 
   &__display {
     display: flex;
     width: 100%;
     padding: 20px;
     flex-wrap: wrap;
-
+    justify-content: center;
+    overflow-y: auto;
+    height: calc(100vh - 380px);
+    @include desktop {
+      height: calc(100vh - 440px);
+    }
   }
 
   &__box {
@@ -57,11 +117,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    @include desktop{
+    @include desktop {
       height: 100px;
       width: 100px;
     }
-    .boxTitle{
+
+    .boxTitle {
       font-family: $font-primary;
       font-size: 1.0rem;
       color: $text_color_dark;
@@ -75,11 +136,12 @@
     align-items: center;
 
   }
-  &__btn{
+
+  &__btn {
     font-size: 0.9rem;
     padding: 5px;
     margin: 5px 0;
-    @include desktop{
+    @include desktop {
       font-size: 0.9rem;
       padding: 5px 5px;
     }
