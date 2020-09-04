@@ -26,8 +26,8 @@ function Header({onLoginClick}) {
       </div>
       <ul className={isActive ? 'header__menu menu-active' : 'header__menu'}>
         <a href={'/#'}>Home</a>
-        <a href={'/features'}>Features</a>
-        <a href={'/#'}>Take a look</a>
+        <a href={'#features'}>Features</a>
+        <a href={'#look'}>Take a look</a>
         
           <AuthUserContext.Consumer>
             {isAuth => {

@@ -2,7 +2,7 @@ import React from 'react';
 
 function TakeALookSection() {
   return (
-    <section className={'look'}>
+    <section className={'look'} id={'look'}>
       <div className={'container'}>
         <h2 className={'look__title'}>TAKE A LOOK!</h2>
         <div className={'look__wrapper'}>
