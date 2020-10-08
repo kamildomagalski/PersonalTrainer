@@ -1,6 +1,7 @@
 .userPlans {
 
-  width: 100%;
+  //width: 100%;
+  width: calc(100% - 190px);
   height: 100%;
   display: flex;
   flex-direction: column;

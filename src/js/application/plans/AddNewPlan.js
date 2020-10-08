@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import CloseXBtn from "../../components/CloseXBtn";
+import {withFirebase} from '../../components/Firebase/IndexFirebase'
 
 
-function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible}) {
+function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, firebase}) {
  
+  const [userExercises, setUserExercises]= useState([])
+  
+  const userId=userData.id
+  const rootRef = firebase.db.ref('users/' + userId);
+  const userExercisesRef = rootRef.child('/userExercise')
+  console.log(userExercises);
+  useEffect(()=>{
+    userExercisesRef.on("value", snap => {
+    
+      let values = snap.val();
+      const tmpUser = [];
+      for (const key in values) {
+        tmpUser.push({...values[key]});
+      }
+      setUserExercises(tmpUser);
+    })
+  },[userId])
  const handleOff= ()=>{
  handleAddNewPlanVisible(false)
  }
@@ -20,10 +38,16 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible}) {
                 className={'addNewPlan__input addNewPlan__description'} placeholder={'Add description'}/>
         
          <div className={'selectRow'}>
-           <p className={'selectRow__text'}>Difficulty:</p>
-           <select name={'difficulty'}
-                   placeholder={'difficulty'}
+           <p className={'selectRow__text'}>Exercise 1:</p>
+           <select name={'exercise1'}
                    className={'addNewPlan__input addNewPlan__select'}>
+             <option>select...</option>
+             {userExercises.map((el, i)=>{
+               return (<option key={i}>{el.description}</option>
+               )}
+               
+             )
+             }
              <option value={'easy'}>Easy</option>
              <option value={'medium'}>Medium</option>
              <option value={'hard'}>Hard</option>
@@ -37,4 +61,4 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible}) {
    </div>
  );
 }
-export default AddNewPlan;
+export default withFirebase(AddNewPlan);

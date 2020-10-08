@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding: 0 20px 20px;
 
   &__title {
     font-family: $font-primary;
@@ -12,7 +13,15 @@
     color: $text_color_orange;
     margin: 20px 0;
   }
-
+  .wrapper {
+    position: relative;
+    background-color: $bg_color_transparent_light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
 
 
 

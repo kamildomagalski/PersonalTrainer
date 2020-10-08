@@ -18,7 +18,7 @@ function AppMainPulpit() {
     id:'',
   })
   const userId= firebase.auth().currentUser.uid;
-  console.log(userId)
+  // console.log(userId)
   const rootRef= firebase.database().ref('users/' + userId);
 
   const nameRef= rootRef.child('username');
@@ -69,7 +69,7 @@ function AppMainPulpit() {
         <div className={'board appPulpit__board'}>
           <Route path={'/app/calendar'} component={Calendar}/>
           <Route path={'/app/history'} component={History}/>
-          <Route path={'/app/plans'} component={Plans}/>
+          <Route path={'/app/plans'} render={(props) => <Plans {...props} userData={userData}/>}/>
           <Route path={'/app/exercises'} render={(props) => <Exercises {...props} userData={userData}/>}/>
           
         </div>
