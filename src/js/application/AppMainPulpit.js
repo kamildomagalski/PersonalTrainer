@@ -3,7 +3,7 @@ import Logo from "../components/Logo";
 import {Route, Link} from 'react-router-dom'
 import Calendar from "./Calendar";
 import History from "./History";
-import Plans from "./Plans";
+import Plans from "./plans/Plans";
 import Exercises from './exercises/Exercises'
 import LogOutButton from "../components/logic_components/LogOutButton";
 import withAuthorization from '../components/Session/withAuthorization'
@@ -18,6 +18,7 @@ function AppMainPulpit() {
     id:'',
   })
   const userId= firebase.auth().currentUser.uid;
+  console.log(userId)
   const rootRef= firebase.database().ref('users/' + userId);
 
   const nameRef= rootRef.child('username');

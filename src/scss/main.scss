@@ -21,9 +21,12 @@
 @import "application/appMainPulpit";
 @import "application/calendar";
 @import "application/history";
-@import "application/exercises";
-@import "application/addNewExercise";
-@import "application/exerciseInfo";
-@import "application/allExercises";
-@import "application/userExercises";
+@import "application/exercises/exercises";
+@import "application/exercises/addNewExercise";
+@import "application/exercises/exerciseInfo";
+@import "application/exercises/allExercises";
+@import "application/exercises/userExercises";
 @import "elements/addExercise";
+
+@import "application/plans/plans";
+@import "application/plans/userPlans";
