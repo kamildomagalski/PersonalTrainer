@@ -21,7 +21,7 @@
     padding: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    overflow-y: auto;
+    //overflow-y: auto;
     height: calc(100vh - 460px);
     @include desktop {
       height: calc(100vh - 440px);
@@ -31,7 +31,8 @@
 
   &__box {
     border: 1px solid black;
-    height: 100px;
+    height: 100%;
+    min-height: 200px;
     width: 100px;
     background-color: $bg-color_transparent;
     margin: 10px;
