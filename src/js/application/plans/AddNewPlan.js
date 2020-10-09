@@ -6,19 +6,13 @@ import {withFirebase} from '../../components/Firebase/IndexFirebase'
 function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, firebase}) {
   
   const [userExercises, setUserExercises] = useState([])
-  const [exercise1, setExercise1] = useState({
+  const [exercise, setExercise] = useState({
     exerciseName: '',
     reps: '',
     series: '',
     duration: ''
   })
-  const [test, setTest]= useState({
-    exerciseName: '',
-    reps: '',
-    series: '',
-    duration: ''
-  })
-  const [testList, setTestList]=useState([])
+  const [exercisesList, setExercisesList] = useState([])
   
   const userId = userData.id
   const rootRef = firebase.db.ref('users/' + userId);
@@ -35,17 +29,9 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
     })
   }, [userId])
   
-  const handleExercise1Change = (e) => {
+  const handleExerciseChange = (e) => {
     const {name, value} = e.target;
-    setExercise1(prevState => ({
-        ...prevState,
-        [name]: value
-      }
-    ))
-  }
-  const handleTestChange = (e) => {
-    const {name, value} = e.target;
-    setTest(prevState => ({
+    setExercise(prevState => ({
         ...prevState,
         [name]: value
       }
@@ -54,18 +40,27 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    userPlansRef.set(exercise1)
+    userPlansRef.set(exercise)
     handleOff();
   }
-  const handleAddExercise= (e) => {
+  const handleAddExercise = (e) => {
     e.preventDefault();
-    setTestList(prevState => ([
+    setExercisesList(prevState => ([
       ...prevState,
-        test
-      ]))
-    
+      exercise
+    ]))
+    clearExercise();
   }
-  console.log(testList);
+  function clearExercise(){
+    setExercise({
+      exerciseName: '',
+      reps: '',
+      series: '',
+      duration: ''
+    })
+  }
+  console.log(exercisesList);
+  
   const handleOff = () => {
     handleAddNewPlanVisible(false)
   }
@@ -80,42 +75,55 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
           <input type={'text'}
                  name={'description'}
                  className={'addNewPlan__input addNewPlan__description'} placeholder={'Add description'}/>
-          
-            <div className={'selectRow'}>
-              <p className={'selectRow__text'}>Exercise 1:</p>
-              <select name={'exerciseName'}
-                      value={test.exerciseName}
-                      className={'addNewPlan__input addNewPlan__select'}
-                      onChange={handleTestChange}>
-                <option value={'select...'}>select...</option>
-                {userExercises.map((el, i) => {
-                    return (
-                      <option key={i} value={el.description}>{el.description}</option>
-                    )
-                  }
-                )}
-              </select>
-              <input name={'series'}
-                     value={test.series}
-                     onChange={handleTestChange}
-                     type={'number'}
-                     className={'addNewPlan__input addNewPlan__name'} placeholder={'number of series'}/>
-              
-              <input name={'reps'}
-                     value={test.reps}
-                     onChange={handleTestChange}
-                     type={'number'}
-                     className={'addNewPlan__input addNewPlan__name'} placeholder={'number of reps'}/>
-              <input name={'duration'}
-                     value={test.duration}
-                     onChange={handleTestChange}
-                     type={'number'}
-                     className={'addNewPlan__input addNewPlan__name'} placeholder={'duration'}/>
-            </div>
-          
-          <button onClick={handleAddExercise} className={'btn addNewExercise__btn btn-invalid'} type={'submit'}>Add plan
+          <button type={'submit'}
+                  onClick={handleSubmit}
+                  className={'btn addNewExercise__btn btn-invalid'}>Add plan
           </button>
         </form>
+        <form className={'addNewPlan__form'}>
+          <div className={'selectRow'}>
+            <p className={'selectRow__text'}>Exercise 1:</p>
+            <select name={'exerciseName'}
+                    value={exercise.exerciseName}
+                    className={'addNewPlan__input addNewPlan__select'}
+                    onChange={handleExerciseChange}>
+              <option value={'select...'}>select...</option>
+              {userExercises.map((el, i) => {
+                  return (
+                    <option key={i} value={el.description}>{el.description}</option>
+                  )
+                }
+              )}
+            </select>
+            <input name={'series'}
+                   value={exercise.series}
+                   onChange={handleExerciseChange}
+                   type={'number'}
+                   className={'addNewPlan__input addNewPlan__name'} placeholder={'number of series'}/>
+            
+            <input name={'reps'}
+                   value={exercise.reps}
+                   onChange={handleExerciseChange}
+                   type={'number'}
+                   className={'addNewPlan__input addNewPlan__name'} placeholder={'number of reps'}/>
+            <input name={'duration'}
+                   value={exercise.duration}
+                   onChange={handleExerciseChange}
+                   type={'number'}
+                   className={'addNewPlan__input addNewPlan__name'} placeholder={'duration'}/>
+            <button type={'submit'}
+                    onClick={handleAddExercise}
+                    className={'btn addNewExercise__btn btn-invalid'}>Add exercise
+            </button>
+          </div>
+        </form>
+        <ul>
+          {exercisesList.map((el, i) => {
+            return(
+              <li key={i}>{el.exerciseName}</li>
+            )
+          } )}
+        </ul>
       </div>
     
     </div>
