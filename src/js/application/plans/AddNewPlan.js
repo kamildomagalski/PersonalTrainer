@@ -51,7 +51,8 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
     ]))
     clearExercise();
   }
-  function clearExercise(){
+  
+  function clearExercise() {
     setExercise({
       exerciseName: '',
       reps: '',
@@ -59,7 +60,7 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
       duration: ''
     })
   }
-  console.log(exercisesList);
+  
   
   const handleOff = () => {
     handleAddNewPlanVisible(false)
@@ -69,20 +70,22 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
       <div className={'board addNewPlan__board'}>
         <CloseXBtn onClick={handleOff}/>
         <h2 className={'addNewPlan__title'}>Create new plan</h2>
-        <form className={'addNewPlan__form'}>
-          <input type={'text'} name={'name'}
-                 className={'addNewPlan__input addNewPlan__name'} placeholder={'Add name'}/>
-          <input type={'text'}
-                 name={'description'}
-                 className={'addNewPlan__input addNewPlan__description'} placeholder={'Add description'}/>
-          <button type={'submit'}
-                  onClick={handleSubmit}
-                  className={'btn addNewExercise__btn btn-invalid'}>Add plan
-          </button>
-        </form>
-        <form className={'addNewPlan__form'}>
-          <div className={'selectRow'}>
-            <p className={'selectRow__text'}>Exercise 1:</p>
+        <div className={'formWrapper'}>
+        <div className={'formWrapper__dataInput'}>
+          <form className={'addNewPlan__form'}>
+            <p className={'selectRow__text'}>Plan info:</p>
+            <input type={'text'} name={'name'}
+                   className={'addNewPlan__input addNewPlan__name'} placeholder={'Add plan name'}/>
+            <input type={'text'}
+                   name={'description'}
+                   className={'addNewPlan__input addNewPlan__description'} placeholder={'Add plan description'}/>
+            <button type={'submit'}
+                    onClick={handleSubmit}
+                    className={'btn addNewPlan__btn btn-invalid'}>Add plan
+            </button>
+          </form>
+          <form className={'addNewPlan__form addNewPlan__form-exercise'}>
+            <p className={'selectRow__text'}>Exercise info:</p>
             <select name={'exerciseName'}
                     value={exercise.exerciseName}
                     className={'addNewPlan__input addNewPlan__select'}
@@ -113,17 +116,20 @@ function AddNewPlan({isAddNewPlanVisible, handleAddNewPlanVisible, userData, fir
                    className={'addNewPlan__input addNewPlan__name'} placeholder={'duration'}/>
             <button type={'submit'}
                     onClick={handleAddExercise}
-                    className={'btn addNewExercise__btn btn-invalid'}>Add exercise
+                    className={'btn addNewPlan__btn addNewPlan__btn-exercise btn-invalid'}>Add exercise
             </button>
-          </div>
-        </form>
-        <ul>
-          {exercisesList.map((el, i) => {
-            return(
-              <li key={i}>{el.exerciseName}</li>
-            )
-          } )}
-        </ul>
+          
+          </form>
+        </div>
+          <ul>
+            {exercisesList.map((el, i) => {
+              return (
+                <li key={i}>{el.exerciseName}</li>
+              )
+            })}
+          </ul>
+        </div>
+        
       </div>
     
     </div>

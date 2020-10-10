@@ -21,6 +21,7 @@
     @include desktop {
       padding: 20px 30px;
       width: 50vw;
+      min-width: 490px;
       max-width: 600px;
 
     }
@@ -31,6 +32,21 @@
     color: $text_color_green;
     font-size: 1.5rem;
     margin: 20px 0;
+  }
+
+  .formWrapper {
+    position: relative;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    &__dataInput {
+      display: flex;
+      flex-direction: column;
+      @include desktop {
+        flex-direction: row;
+
+      }
+    }
   }
 
   &__form {
@@ -44,24 +60,25 @@
     }
   }
 
+
   &__input {
     width: 100%;
-
     border: 2px solid $border_color_green;
-    margin: 10px 0;
+    margin: 8px 0 0;
     border-radius: 5px;
     font-family: $font_primary;
     font-size: 0.9rem;
     padding: 5px 0 5px 10px;
   }
   &__select{
-    margin: 5px 0;
+    margin: 8px 0 0;
+    padding: 4px 0 4px 10px;
     width: 100%;
     @include tablet{
-      max-width: 120px;
+      //max-width: 120px;
     }
     @include desktop{
-      max-width: 170px;
+      //max-width: 170px;
 
     }
 
@@ -86,7 +103,8 @@
   }
 
   &__description {
-    height: 100px;
+    height: 151px;
+    margin-bottom: 0;
   }
   .btn-invalid{
     background-color: #acafb1;
@@ -96,12 +114,24 @@
     width: 100%;
     padding: 7px 10px;
     margin: 10px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     @include tablet{
       font-size: 1.1rem;
       width: unset;
-      padding: 7px 20px;
+      padding: 10px 35px;
       margin: 15px 0 0;
 
     }
+  }
+  &__btn-exercise{
+    position: static;
+    width: 174px;
+    padding: 5px 10px;
+    margin: 8px 0 0;
+border-radius: 5px;
+    transform: none;
   }
 }
